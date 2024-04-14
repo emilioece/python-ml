@@ -54,6 +54,7 @@ def index():
             latest_image_url = latest_image(OUTPUT_FOLDER)
 
 
+
     
 
     return render_template('index.html', latest_image_url=latest_image_url)
