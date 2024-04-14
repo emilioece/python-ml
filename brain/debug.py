@@ -1,7 +1,8 @@
 import shutil
-from os import listdir
+from os import listdir, remove
 from os.path import join, isdir
-from folders import OUTPUT_FOLDER
+from folders import INPUT_FOLDER, OUTPUT_FOLDER
+from glob import glob
 
 def clear_directory(directory):
     for item in listdir(directory):
@@ -12,9 +13,29 @@ def clear_directory(directory):
                 shutil.rmtree(item_path)
             except OSError as e:
                 print(f"Error deleting {item_path}: {e}")
+
+def clear_files(directory):
+    # Get list of all files in the directory
+    files = glob(join(directory, '*'))
     
+    # Iterate over each file and remove it
+    for file_path in files:
+        try:
+            remove(file_path)
+            print(f"Removed file: {file_path}")
+        except Exception as e:
+            print(f"Failed to remove file: {file_path}. Error: {e}")
+    pass 
+
+def clear_input():
+    clear_files(INPUT_FOLDER)
+
 def clear_output():
     clear_directory(OUTPUT_FOLDER)
 
-if __name__ == '__main__':
+def clear_all():
     clear_output()
+    clear_input()
+
+if __name__ == '__main__':
+    clear_all()
