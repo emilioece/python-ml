@@ -1,7 +1,7 @@
 import shutil
 from os import listdir, remove
 from os.path import join, isdir
-from folders import INPUT_FOLDER, OUTPUT_FOLDER
+from folders import INPUT_FOLDER, OUTPUT_FOLDER, DATABASE_FOLDER
 from glob import glob
 
 def clear_directory(directory):
@@ -27,6 +27,9 @@ def clear_files(directory):
             print(f"Failed to remove file: {file_path}. Error: {e}")
     pass 
 
+def clear_database():
+    clear_files(DATABASE_FOLDER)
+
 def clear_input():
     clear_files(INPUT_FOLDER)
 
@@ -36,6 +39,7 @@ def clear_output():
 def clear_all():
     clear_output()
     clear_input()
+    clear_database()
 
 if __name__ == '__main__':
     clear_all()
