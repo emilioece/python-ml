@@ -4,7 +4,6 @@ import pathlib
 from os.path import join, basename
 import platform
 import random 
-from PIL import Image
 from folders import BASE_FOLDER, INPUT_FOLDER, OUTPUT_FOLDER
 from folders import latest_image
 from images import process
