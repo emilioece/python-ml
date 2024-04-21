@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>brain tumor detector :3</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="center">
+    <h1 style="text-align: center;">image page</h1>
+
+    <form action="/view/{{response.id}}" method="POST">
+        <img src="{{ url_for('static', filename=response.latest_image_url) }}" alt="latest image">
+    </form>
+
+    <label for="generated_response">generated response:</label>
+    <input type="text" id="generated_response" name="generated_response" placeholder="sample response...">
+
+    <form>
+        <input type="button" value="back" onclick="history.back()">
+       </form>
+
+</div>
+{% endblock %}
