@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block head %}
-    <title>brain tumor detector:3</title>
+    <title>brain tumor detector :3</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 {% endblock %}
 
 {% block body %}
 <div class="center">
     
-    <h1 style="text-align: center">Test :3</h1>
+    <h1 style="text-align: center">brain tumor detector :3</h1>
 
     <form action="{{ url_for('index') }}" method="POST" enctype="multipart/form-data">
         <!-- Add file input field for uploading -->
@@ -25,22 +25,16 @@
             <th>image</th>
             <th>options</th>
         </tr>
+        {% for response in responses %}
         <tr>
-            <td><h1></h1></td>
-            <td><h1></h1></td>
+            <td>{{ response.id }}</td>
+            <td> {{ response.date_created.date() }}</td>
             <td>
-                <a href="#">generate response</a>
+                <a href="/view/{{response.id}}">view :O</a>
                 <br>
                 <a href="#">ai doctor</a>
             </td>
         </tr>
+        {% endfor %}
     </table>
-
-
-    {% if latest_image_url %}
-        <img src="{{ latest_image_url }}" alt="Latest Image">
-    {% else %}
-        <p>No image available</p>
-    {% endif %}
-</div>
 {% endblock %}
